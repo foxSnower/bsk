@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>智慧班组看板</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+
+<body class="g-bg">
+  
+    <div class="g-header">
+      <div class="logo"></div>
+      <div class="g-up">
+        <span class="hd">智 慧 班 组 看 板</span>
+      </div>
+    </div>
+    <div class="g-body">
+      <div class="g-left">
+        <div class="m-echarts top u-echarts-bg">
+          <div class="title">人员信息</div>
+          <div class="ech" id="TransverseBar"></div>
+        </div>
+        <div class="m-echarts center u-echarts-bg">
+          <div class="title">视频远程协助</div>
+          <div class='cont'>
+            <p>本月共<span id="num1">78</span>小时</p>
+            <p>相当于</p>
+            <p>现场指导通勤时间<span id="num2">5234</span>小时</p>
+          </div>
+        </div>
+        <div class="m-echarts bottom u-echarts-bg">
+          <div class="title">运维效能漏斗图</div>
+          <div class="ech" id="Funnel"></div>
+        </div>
+      </div>
+  
+      <div class="g-right">
+        <div class="m-echarts top u-echarts-bg">
+          <div class="title">效能效益</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>累计</th>
+                <th>今日</th>
+                <th>实时</th>
+              </tr>
+            </thead>
+            <tbody id="targetInfo">
+              <tr>
+                <td>隐患</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+              </tr>
+              <tr>
+                <td>缺陷</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>外损</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>故障</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>跳闸</td>
+                <td>7</td>
+                <td>7</td>
+                <td>7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="m-echarts center u-echarts-bg">
+          <div class="title">班组生产计划（完成率）</div>
+          <div class="ech" id="Bar"></div>
+        </div>
+        <div class="m-echarts bottom u-echarts-bg">
+          <div class="title">应急响应有效时间（分钟）</div>
+          <div class="ech" id="TransverseBar2"></div>
+        </div>
+      </div>
+      <!-- 中心地图金额的分布 -->
+      <div class="g-center">
+        <div class="m-echarts top" id="BigMap">
+          <div class="ech-map" id="MainMap"></div>
+          <div class="btn-box">
+            <div  class="btn active">工地信息</div>
+            <div id="task" class="btn">现场作业</div>
+          </div>
+          <div class="icon-zoom" id="MapZoom">
+            <img class="zoom-out" src="./img/zoom-out.png" >
+            <img class="zoom-in" src="./img/zoom-in.png" style="display: none;">
+          </div>
+          <!-- <div class="u-right">已连续安全作业365天</div> -->
+          <div id="scrollBox">
+            <div class="info" id="con1">
+              <div class="map-tip"><span class="z-yellow">高(14:23:00)某某设备出现问题停工2小时<i class="time">12:30:20</i></span></div>
+              <div class="map-tip"><span class="z-red">中(14:32:30)车间李四误操作，引发安全事故<i class="time">12:30:20</i></span></div>
+              <div class="map-tip"><span class="z-yellow">高(14:23:00)某某设备出现问题停工2小时<i class="time">12:30:20</i></span></div>
+              <div class="map-tip"><span class="z-red">中(14:32:30)车间李四误操作，引发安全事故<i class="time">12:30:20</i></span></div>
+            </div>
+            <div class="info" id="con2">
+  
+            </div>
+          </div>
+  
+          <!-- <div id="map" style="width:100%; height:386px"></div> -->
+        </div>
+        <div class="m-echarts bottom u-echarts-bg2">
+          <div class="title">设备器具</div>
+          <div class="circle-box">
+            <div class="circle" id="circle1">
+              <p class="num">13957</p>
+              <p class="text">设备总数</p>
+            </div>
+            <div class="circle" id="circle2">
+              <p class="num">4858</p>
+              <p class="text">故障数量</p>
+            </div>
+            <div class="circle" id="circle3">
+              <p class="num">75%</p>
+              <p class="text">设备可用率</p>
+            </div>
+            <div class="circle" id="circle4">
+              <p class="num">485</p>
+              <p class="text">建设中设备</p>
+            </div>
+            <div class="circle" id="circle5">
+              <p class="num">577</p>
+              <p class="text">开展状态检查数量</p>
+            </div>
+          </div>
+  
+          <!-- <div id="TransverseBar"></div> -->
+        </div>
+      </div>
+    </div>
+  <!-- <div class="g-map">
+    <div class="map" id="MainMap"></div>
+  </div> -->
+  <script src="./js/echarts.min.js"></script>
+  <script src="./js/echarts-gl.min.js"></script>
+  <script src="./js/jquery-1.9.1.min.js"></script>
+  <script src="./js/countUp.js"></script>
+  <script src="./js/setEcharts.js"></script>
+  <script src="./js/circle-progress.js"></script>
+  <script src="./js/getData.js"></script>
+
+  <script>
+    $(function () {
+      //放大地图
+      $("#MapZoom").click(function(){
+        if( $(".zoom-out").css("display")!="none"){
+          $("#BigMap").addClass("g-map");
+          $(".btn-box").css("display","none");
+          $(".zoom-out").css("display","none");
+          $("#scrollBox").css("display","none");
+          $(".zoom-in").css("display","block");
+        }else{
+          $("#BigMap").removeClass("g-map");
+          $(".btn-box").css("display","block");
+          $(".zoom-out").css("display","block");
+          $("#scrollBox").css("display","block");
+          $(".zoom-in").css("display","none");
+        }
+         
+          MainMapchart.resize();
+      });
+
+
+      var nums = {
+        useEasing: true,  // 过渡动画效果，默认ture
+        useGrouping: true,  // 千分位效果，例：1000->1,000。默认true
+        separator: ',',   // 使用千分位时分割符号
+        decimal: '.',   // 小数位分割符号
+        prefix: '',    // 前置符号
+        suffix: ''    // 后置符号，可汉字
+      }
+      var num1Value = 75;
+      var nym2Value = 5234;
+      var num1 = new CountUp('num1', 0, num1Value, 0, 2, nums),
+        num2 = new CountUp('num2', 0, nym2Value, 0, 2, nums)
+      // $('#num1').text(75);
+      // $('#totolTime').attr('data-num', 75);
+      // $('#totolTime').animateNums();
+      num1.start();
+      num2.start()
+
+      var numTime = setInterval(function () {
+        num1.update(num1Value++)
+        num2.update(nym2Value++)
+      }, 5000);
+
+
+      //按钮切换
+      $('#task').click(function(){
+        document.location = './task.html';
+      })
+
+      //漏斗图
+      s.Funnel();
+      //横向条形图
+      s.TransverseBar();
+      s.TransverseBar2();
+      s.Bar();
+      // var test = [
+      //   {
+      //     "circuitName": "香鹤1R012（青香站）",
+      //     "constructionUnit": "上海送变电工程有限公司",
+      //     "createTime": "2020-05-28 19:49:13",
+      //     "followUpUser": "34",
+      //     "groupId": 1,
+      //     "informUser": "周渲程",
+      //     "isDay": 0,
+      //     "isSafety": 1,
+      //     "isStand": 1,
+      //     "isTestSafety": 1,
+      //     "latitudeAndLongitudeArray": [121.39758, 31.62278],
+      //     "phone": "18817552013",
+      //     "state": 3,
+      //     "taskDescribe": "123",
+      //     "taskId": 34,
+      //     "taskSafety": 2,
+      //     "taskName": "上海青浦鹤民110kV输变电工程",
+      //     "theWeather": "1"
+      //   },
+      //   {
+      //     "circuitName": "龙定1374",
+      //     "constructionUnit": "上海送变电工程有限公司",
+      //     "createTime": "2020-05-29 14:45:28",
+      //     "groupId": 1,
+      //     "informUser": "张乾",
+      //     "latitudeAndLongitudeArray": [121.34164, 30.74163],
+      //     "phone": "13162237170",
+      //     "state": 0,
+      //     "taskDescribe": "监控",
+      //     "taskId": 35,
+      //     "taskSafety": 1,
+      //     "taskName": "市南定安110kV变电站电气新建工程"
+      //   },
+      //   {
+      //     "circuitName": "龙定1377",
+      //     "constructionUnit": "上海送变电工程有限公司",
+      //     "createTime": "2020-05-29 14:47:59",
+      //     "groupId": 1,
+      //     "informUser": "张乾",
+      //     "latitudeAndLongitudeArray": [121.22, 31.03],
+      //     "phone": "13162237170",
+      //     "state": 0,
+      //     "taskDescribe": "监控",
+      //     "taskId": 36,
+      //     "taskSafety": 0,
+      //     "taskName": "市南定安110kV变电站电气新建工程"
+      //   },
+      //   {
+      //     "circuitName": "龙定1377",
+      //     "constructionUnit": "上海送变电工程有限公司",
+      //     "createTime": "2020-05-29 14:47:59",
+      //     "groupId": 1,
+      //     "informUser": "张乾",
+      //     "latitudeAndLongitudeArray": [121.53, 31.22],
+      //     "phone": "13162237170",
+      //     "state": 0,
+      //     "taskDescribe": "监控",
+      //     "taskId": 36,
+      //     "taskName": "市南定安110kV变电站电气新建工程"
+      //   }
+      // ];
+      // s.MainMap(test);
+
+
+
+
+      //设备机器
+      var setCircle = function (fill, size, value) {
+        return {
+          value: value,
+          size: size,
+          lineCap: 'round',
+          reverse: true,
+          thickness: 10,
+          fill: {
+            gradient: fill
+          }
+        }
+      }
+
+
+      var circleData1 = [
+        { color: ["#3366FF", "#00CCFF"], data: 1 },
+        { color: ["#00D2FF", "#FB7293"], data: 0.75 },
+        { color: ["#CC0033", "#00CCFF"], data: 0.85 },
+        { color: ["#CC00AD", "#00CCFF"], data: 0.65 },
+        { color: ["#00CC82", "#00CCFF"], data: 0.45 },
+      ];
+      var circleData2 = [
+        { color: ["#3366FF", "#00CCFF"], data: 1 },
+        { color: ["#00D2FF", "#FB7293"], data: 0.85 },
+        { color: ["#CC0033", "#00CCFF"], data: 0.35 },
+        { color: ["#CC00AD", "#00CCFF"], data: 0.45 },
+        { color: ["#00CC82", "#00CCFF"], data: 0.15 },
+      ];
+
+      var circleData = circleData1;
+      var setC = function () {
+        //适应小于1024px屏幕的显示
+        if ($(window).width() <= 1300) {
+          for (i = 0; i < circleData.length; i++) {
+            $('#circle' + [i + 1]).circleProgress(setCircle(circleData[i].color, 80, circleData[i].data));
+          }
+          // $('#circle').circleProgress(setCircle(["#3366FF", "#06B9F7"], 60, 1));
+          // $('#circle2').circleProgress(setCircle(["#3366FF", "#C985A9"], 60, 0.75));
+          // $('#circle3').circleProgress(setCircle(["#3366FF", "#C4083B"], 60, 0.75));
+          // $('#circle4').circleProgress(setCircle(["#3366FF", "#CB01AD"], 60, 0.75));
+          // $('#circle5').circleProgress(setCircle(["#3366FF", "#00CC84"], 60, 0.75));
+        } else {
+          for (i = 0; i < circleData.length; i++) {
+            // console.log($('#circlle' + [i + 1]))
+            $('#circle' + [i + 1]).circleProgress(setCircle(circleData[i].color, 90, circleData[i].data));
+          }
+          // $('#circle').circleProgress(setCircle(["#3366FF", "#06B9F7"], 90, 1));
+          // $('#circle2').circleProgress(setCircle(["#3366FF", "#C985A9"], 90, 0.75));
+          // $('#circle3').circleProgress(setCircle(["#3366FF", "#C4083B"], 90, 0.75));
+          // $('#circle4').circleProgress(setCircle(["#3366FF", "#CB01AD"], 90, 0.75));
+          // $('#circle5').circleProgress(setCircle(["#3366FF", "#00CC84"], 90, 0.75));
+        }
+      }
+
+
+      setC();
+
+
+      var circleTime = setInterval(function () {
+        if (circleData == circleData1) {
+          circleData = circleData2
+        } else {
+          circleData = circleData1
+        }
+        // $('#circle1').circleProgress({ value: 0.5, fill: { color: 'orange' }});
+        setC();
+      }, 5000);
+
+
+
+
+
+
+
+    })
+  </script>
+</body>
+
+
+</body>
+
+</html>
