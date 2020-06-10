@@ -25,7 +25,7 @@
             <div class="m-echarts center u-echarts-bg">
                 <div class="title">运维效能漏斗图</div>
                 <div class="ech" id="Funnel"></div>
-              </div>
+            </div>
             <!-- <div class="m-echarts center u-echarts-bg">
                 <div class="title">视频远程协助</div>
                 <div class='cont'>
@@ -52,7 +52,17 @@
             </div>
             <div class="m-echarts center u-echarts-bg task">
                 <div class="title">任务当前进度</div>
-                
+                <div class="work-progress">
+                    <p class="one"><span class="finish">待领取</span>
+                        <span class="finish">待勘查</span>
+                        <span class="active">待审核</span>
+                        <span>待试验</span></p>
+                    <p class="two"><span >完成</span>
+                        <span>待复核</span>
+                        <span >试验工作开始</span>
+                        <span >现场安全措施</span></p>
+                </div>
+
             </div>
             <div class="m-echarts bottom u-echarts-bg3 task-detail">
                 <div class="title">班组生产任务完成情况</div>
@@ -79,7 +89,7 @@
                     <div class="btn active">现场作业</div>
                 </div>
                 <div class="icon-zoom" id="MapZoom">
-                    <img class="zoom-out" src="./img/zoom-out.png" >
+                    <img class="zoom-out" src="./img/zoom-out.png">
                     <img class="zoom-in" src="./img/zoom-in.png" style="display: none;">
                 </div>
                 <div id="scrollBox">
@@ -140,24 +150,24 @@
 
     <script>
         $(function () {
-           //放大地图
-      $("#MapZoom").click(function(){
-        if( $(".zoom-out").css("display")!="none"){
-          $("#BigMap").addClass("g-map");
-          $(".btn-box").css("display","none");
-          $(".zoom-out").css("display","none");
-          $("#scrollBox").css("display","none");
-          $(".zoom-in").css("display","block");
-        }else{
-          $("#BigMap").removeClass("g-map");
-          $(".btn-box").css("display","block");
-          $(".zoom-out").css("display","block");
-          $("#scrollBox").css("display","block");
-          $(".zoom-in").css("display","none");
-        }
-         
-          MainMapchart.resize();
-      });
+            //放大地图
+            $("#MapZoom").click(function () {
+                if ($(".zoom-out").css("display") != "none") {
+                    $("#BigMap").addClass("g-map");
+                    $(".btn-box").css("display", "none");
+                    $(".zoom-out").css("display", "none");
+                    $("#scrollBox").css("display", "none");
+                    $(".zoom-in").css("display", "block");
+                } else {
+                    $("#BigMap").removeClass("g-map");
+                    $(".btn-box").css("display", "block");
+                    $(".zoom-out").css("display", "block");
+                    $("#scrollBox").css("display", "block");
+                    $(".zoom-in").css("display", "none");
+                }
+
+                MainMapchart.resize();
+            });
 
 
             $('#today-progress').jQMeter({
@@ -207,7 +217,7 @@
 
 
             //   //漏斗图
-              s.Funnel();
+            s.Funnel();
             //横向条形图
             s.TransverseBar();
             s.EchaertsTotalBar();

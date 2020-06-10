@@ -3,34 +3,34 @@
 var FunnelColor = [new echarts.graphic.LinearGradient(
     1, 0, 0, 1,
     [
-      { offset: 1, color: '#9912FF' },
-      { offset: 0, color: '#9727FF' }
+        { offset: 1, color: '#9912FF' },
+        { offset: 0, color: '#9727FF' }
     ]
-  ), new echarts.graphic.LinearGradient(
+), new echarts.graphic.LinearGradient(
     1, 0, 0, 1,
     [
-      { offset: 1, color: '#19479D' },
-      { offset: 0, color: '#0E68E9' }
+        { offset: 1, color: '#19479D' },
+        { offset: 0, color: '#0E68E9' }
     ]
-  ), new echarts.graphic.LinearGradient(
+), new echarts.graphic.LinearGradient(
     1, 0, 0, 1,
     [
-      { offset: 1, color: '#F1AB02' },
-      { offset: 0, color: '#C2AE11' }
+        { offset: 1, color: '#F1AB02' },
+        { offset: 0, color: '#C2AE11' }
     ]
-  ), new echarts.graphic.LinearGradient(
+), new echarts.graphic.LinearGradient(
     1, 0, 0, 1,
     [
-      { offset: 1, color: '#15AA29' },
-      { offset: 0, color: '#269209' }
+        { offset: 1, color: '#15AA29' },
+        { offset: 0, color: '#269209' }
     ]
-  ), new echarts.graphic.LinearGradient(
+), new echarts.graphic.LinearGradient(
     1, 0, 0, 1,
     [
-      { offset: 1, color: '#02F1BA' },
-      { offset: 0, color: '#2184E4' }
+        { offset: 1, color: '#02F1BA' },
+        { offset: 0, color: '#2184E4' }
     ]
-  )];
+)];
 
 //横向柱状图
 var BlueToPink = new echarts.graphic.LinearGradient(
@@ -44,10 +44,10 @@ var BlueToPink = new echarts.graphic.LinearGradient(
 var TransverseBarColor = new echarts.graphic.LinearGradient(
     1, 0, 0, 1,
     [
-      { offset: 1, color: '#00D2FF' },
-      { offset: 0, color: '#FB7293' }
+        { offset: 1, color: '#00D2FF' },
+        { offset: 0, color: '#FB7293' }
     ]
-  );
+);
 var TransverseBarColor2 = new echarts.graphic.LinearGradient(
     1, 0, 0, 1,
     [
@@ -61,74 +61,74 @@ var data = [95.6, 91.4, 97.2, 91.3];
 var yMax = 100;
 var dataShadow = [];
 for (var i = 0; i < data.length; i++) {
-  dataShadow.push(yMax);
+    dataShadow.push(yMax);
 }
 
 //声明所有图形
-var FunnelChart,TransverseBarChart, BarChart,TransverseBar2Chart, MainMapchart;
+var FunnelChart, TransverseBarChart, BarChart, TransverseBar2Chart, MainMapchart;
 var ech = {
-     //漏斗图设计
-  Funnel: {//['#931FFF', '#1749A4', '#DCAC08', '#18A523','#07E1C0']
-  color: FunnelColor,
-  // title: {
-  //   text: '运维效能漏斗图',
-  //   left: '30px',
-  //   top: '30px',
-  //   textStyle: {
-  //     color: '#25BCF8',
-  //     fontSize: '12'
-  //   },
-  // },
-  tooltip: {
-    trigger: 'item',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    formatter: "{a} <br/>{b}  {c}%"
+    //漏斗图设计
+    Funnel: {//['#931FFF', '#1749A4', '#DCAC08', '#18A523','#07E1C0']
+        color: FunnelColor,
+        // title: {
+        //   text: '运维效能漏斗图',
+        //   left: '30px',
+        //   top: '30px',
+        //   textStyle: {
+        //     color: '#25BCF8',
+        //     fontSize: '12'
+        //   },
+        // },
+        tooltip: {
+            trigger: 'item',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            formatter: "{a} <br/>{b}  {c}%"
 
-  },
-  toolbox: {
-    feature: {
-      dataView: { readOnly: false },
-      restore: {},
-      saveAsImage: {}
-    }
-  },
-  // legend: {
-  //     data: ['展现','点击','访问','咨询','订单']
-  // },
-  series: [
-    {
-      name: '运维效能',
-      type: 'funnel',
-      left: '10%',
-      bottom: '15%',
-      width: '80%',
-      maxSize: '80%',
-      label: {
-        // position: 'inside',
-        formatter: '{c}%',
-        color: '#25BCF8'
-      },
-      itemStyle: {
-        opacity: 0.5,
-        // borderColor: '#fff',
-        borderWidth: 0
-      },
-      // emphasis: {
-      //     label: {
-      //         position: 'inside',
-      //         formatter: '{b}实际: {c}%'
-      //     }
-      // },
-      data: [
-        { value: 8, name: '' },
-        { value: 10, name: '' },
-        { value: 18, name: '' },
-        { value: 25, name: '' },
-        { value: 36, name: '' },
-      ]
-    }
-  ]
-},
+        },
+        toolbox: {
+            feature: {
+                dataView: { readOnly: false },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        // legend: {
+        //     data: ['展现','点击','访问','咨询','订单']
+        // },
+        series: [
+            {
+                name: '运维效能',
+                type: 'funnel',
+                left: '10%',
+                bottom: '15%',
+                width: '80%',
+                maxSize: '80%',
+                label: {
+                    // position: 'inside',
+                    formatter: '{c}%',
+                    color: '#25BCF8'
+                },
+                itemStyle: {
+                    opacity: 0.5,
+                    // borderColor: '#fff',
+                    borderWidth: 0
+                },
+                // emphasis: {
+                //     label: {
+                //         position: 'inside',
+                //         formatter: '{b}实际: {c}%'
+                //     }
+                // },
+                data: [
+                    { value: 8, name: '' },
+                    { value: 10, name: '' },
+                    { value: 18, name: '' },
+                    { value: 25, name: '' },
+                    { value: 36, name: '' },
+                ]
+            }
+        ]
+    },
     //横向柱状图
     EchaertsTotalBar: {
         color: BlueToPink,
@@ -460,107 +460,107 @@ var ech = {
         ]
     },
     //柱状图
-  Bar: {
-    color: TransverseBarColor2,
-    grid: {
-      top: '40%',
-      left: '15%',
-      right: '15%',
-      bottom: '10%',
-      containLabel: true
-    },
-    tooltip: {
-      trigger: 'item',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      formatter: "{a} <br/>{b}  {c}%"
-
-    },
-    xAxis: {
-      type: 'category',
-
-      axisLine: {
-        show: true,
-        lineStyle: {
-          width: 3,
-          color: '#161F3C'
+    Bar: {
+        color: TransverseBarColor2,
+        grid: {
+            top: '40%',
+            left: '15%',
+            right: '15%',
+            bottom: '10%',
+            containLabel: true
         },
+        tooltip: {
+            trigger: 'item',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            formatter: "{a} <br/>{b}  {c}%"
 
-      },
-      axisLabel: {
-        show: true,
-        color: '#26BCF8'
-      },
-      axisTick: {
-        show: false,
-        // alignWithLabel: true,
-      },
-      data: ['红外测温', '耐压测温', '通道施工', '测验']
-    },
-    yAxis: {
-      type: 'value',
-      splitLine: {
-        show: true,
-        interval: 0,
-        lineStyle: {
-          color: '#081B3F',
-        }
-      },
-      axisLine: {
-        show: false
-      },
-      axisTick: {
-        show: false
-      },
-      axisLabel: {
-        show: false,
-      }
-    },
-    dataZoom: [
-      {
-        type: 'inside'
-      }
-    ],
-    series: [
-      // { // For shadow
-      //   type: 'bar',
-
-      //   barWidth: 5,
-      //   itemStyle: {    // 图形的形状
-      //     barBorderRadius: 15,
-      //     color: '#26306D'
-      //   },
-      //         emphasis: {
-      //     show: false,
-      //     areaColor: 'raba(0,0,0,0)',
-      //     itemStyle: {}
-      //   },
-      //   barGap: '-100%',
-      //   barCategoryGap: '40%',
-      //   data: dataShadow,
-      //   animation: false,
-      //   zlevel: 0
-      // }, 
-      {
-
-        name: '班组生产计划',
-        barWidth: 5,
-        itemStyle: {    // 图形的形状
-          barBorderRadius: [15, 15, 0, 0]
         },
-        label: {
-          show: true,
-          color: '#25BCF8',
-          fontSize: 10,
-          fontWeight: 700,
-          position: 'top',
-          formatter: '{c}%',
-          offset: [0, -20]
+        xAxis: {
+            type: 'category',
+
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    width: 3,
+                    color: '#161F3C'
+                },
+
+            },
+            axisLabel: {
+                show: true,
+                color: '#26BCF8'
+            },
+            axisTick: {
+                show: false,
+                // alignWithLabel: true,
+            },
+            data: ['红外测温', '耐压测温', '通道施工', '测验']
         },
-        data: data,
-        type: 'bar',
-        zlevel: 1
-      }]
-  },
+        yAxis: {
+            type: 'value',
+            splitLine: {
+                show: true,
+                interval: 0,
+                lineStyle: {
+                    color: '#081B3F',
+                }
+            },
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                show: false,
+            }
+        },
+        dataZoom: [
+            {
+                type: 'inside'
+            }
+        ],
+        series: [
+            // { // For shadow
+            //   type: 'bar',
+
+            //   barWidth: 5,
+            //   itemStyle: {    // 图形的形状
+            //     barBorderRadius: 15,
+            //     color: '#26306D'
+            //   },
+            //         emphasis: {
+            //     show: false,
+            //     areaColor: 'raba(0,0,0,0)',
+            //     itemStyle: {}
+            //   },
+            //   barGap: '-100%',
+            //   barCategoryGap: '40%',
+            //   data: dataShadow,
+            //   animation: false,
+            //   zlevel: 0
+            // }, 
+            {
+
+                name: '班组生产计划',
+                barWidth: 5,
+                itemStyle: {    // 图形的形状
+                    barBorderRadius: [15, 15, 0, 0]
+                },
+                label: {
+                    show: true,
+                    color: '#25BCF8',
+                    fontSize: 10,
+                    fontWeight: 700,
+                    position: 'top',
+                    formatter: '{c}%',
+                    offset: [0, -20]
+                },
+                data: data,
+                type: 'bar',
+                zlevel: 1
+            }]
+    },
     //地图
     MainMap: {
         tooltip: {
@@ -681,15 +681,15 @@ var ech = {
                             var data = e.data;
                             // console.log(e)
                             if (data.state == 7) {
-                              return 'gray';
+                                return 'gray';
                             } else if (data.significanceDegree == '1') {
-                              return 'green';
+                                return 'green';
                             } else if (data.significanceDegree == '2') {
-                              return 'orange';
+                                return 'orange';
                             } else if (data.significanceDegree == '3') {
-                              return 'red';
+                                return 'red';
                             }
-                          }
+                        }
                     }
                 },
                 // name: 'light',
@@ -706,20 +706,20 @@ var ech = {
 };
 
 var s = {
-     //漏斗图
-  Funnel: function (obj) {
-    // 基于准备好的dom，初始化echarts实例
-    FunnelChart = echarts.init(document.getElementById('Funnel'));
-    var option = ech.Funnel; // 指定图表的类型
-    //  option.series.data = obj;
-    //   //图例数值
-    // obj.forEach(function (x, index) {
-    //   x.name = x.name + ' ' + x.value;
-    //   option.legend.data.push(x.name);
-    //   x.value = parseInt(x.value)
-    // });
-    FunnelChart.setOption(option)
-  },
+    //漏斗图
+    Funnel: function (obj) {
+        // 基于准备好的dom，初始化echarts实例
+        FunnelChart = echarts.init(document.getElementById('Funnel'));
+        var option = ech.Funnel; // 指定图表的类型
+        //  option.series.data = obj;
+        //   //图例数值
+        // obj.forEach(function (x, index) {
+        //   x.name = x.name + ' ' + x.value;
+        //   option.legend.data.push(x.name);
+        //   x.value = parseInt(x.value)
+        // });
+        FunnelChart.setOption(option)
+    },
     EchaertsTotalBar: function (obj) {
         // 基于准备好的dom，初始化echarts实例
         EchaertsTotalBarChart = echarts.init(document.getElementById('EchaertsTotalBar'));
@@ -784,7 +784,7 @@ var s = {
         //   x.value = parseInt(x.value)
         // });
         BarChart.setOption(option)
-      },
+    },
     MainMap: function (obj) {
         var convertData = function (data) {
             var res = [];
@@ -885,28 +885,28 @@ var s = {
 
 
 //地图的提示款无缝上滚
-  var box = document.getElementById('scrollBox');
-  var con1 = document.getElementById('con1');
-  var con2 = document.getElementById('con2');
-  con2.innerHTML = con1.innerHTML;
+var box = document.getElementById('scrollBox');
+var con1 = document.getElementById('con1');
+var con2 = document.getElementById('con2');
+con2.innerHTML = con1.innerHTML;
 
-  function scrollUp() {
-      if (box.scrollTop >= con1.offsetHeight) {
-          box.scrollTop = 0;
-          console.log( box.scrollTop,con1.offsetHeight)
-      } else {
-          box.scrollTop++
-          // console.log( box.scrollTop,con1.offsetHeight)
-      }
-  }
-  var time = 50;
-  var mytimer = setInterval(scrollUp, time);
-  box.onmouseover = function() {
-      clearInterval(mytimer);
-  }
-  box.onmouseout = function() {
-      mytimer = setInterval(scrollUp, time);
-  } 
+function scrollUp() {
+    if (box.scrollTop >= con1.offsetHeight) {
+        box.scrollTop = 0;
+        console.log(box.scrollTop, con1.offsetHeight)
+    } else {
+        box.scrollTop++
+        // console.log( box.scrollTop,con1.offsetHeight)
+    }
+}
+var time = 50;
+var mytimer = setInterval(scrollUp, time);
+box.onmouseover = function () {
+    clearInterval(mytimer);
+}
+box.onmouseout = function () {
+    mytimer = setInterval(scrollUp, time);
+}
 
 
 //图形响应大小

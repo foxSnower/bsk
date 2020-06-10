@@ -18,6 +18,28 @@ var g = {
   getTaskList: function () {
     getData('/cable/task/getTaskAll', function (res) {
       s.MainMap(res.data);
+      var mapData=res.data;
+      var dataLength = mapData.length;
+      var addHtml = '';
+      var boxClass = ''; 
+      var significanceDegreeText=''
+      for(var i=0;i<dataLength;i++){
+         if(mapData[i].state!=7){
+          if(mapData[i].significanceDegree=='1'){
+            boxClass='z-green';
+            significanceDegreeText='低';
+          }else if(mapData[i].significanceDegree=='2'){
+            boxClass='z-yellow';
+            significanceDegreeText='中';
+          }else if(mapData[i].significanceDegree=='3'){
+            boxClass='z-red';
+            significanceDegreeText='高';
+          }
+          console.log(i)
+          addHtml += '<div class="map-tip"><span class="'+boxClass+'">'+significanceDegreeText+mapData[i].taskName+'<i class="time">'+mapData[i].createTime+'</i></span></div>'
+         }
+      }
+      $("#con1").html(addHtml);
       // console.log(res)
     })
   },
