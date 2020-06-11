@@ -1,4 +1,4 @@
-﻿var DEV = "http://dianlan.yuanjingweb.com"
+var DEV = "http://dianlan.yuanjingweb.com"
 var getData = function (url, callback) {
   url = DEV + url;
   $.ajax({
@@ -17,7 +17,7 @@ var getData = function (url, callback) {
 var g = {
   getTaskList: function () {
     getData('/cable/task/getTaskAll', function (res) {
-      // s.MainMap(res.data);
+      s.MainMap(res.data);
       var mapData=res.data;
       var dataLength = mapData.length;
       var addHtml = '';
@@ -43,17 +43,12 @@ var g = {
       // console.log(res)
     })
   },
-  getConstruction:function(){
-    getData('/cable/getConstruction', function (res) {
-      s.MainMap(res.data);
-    })
-  }
 }
 
 
 
 g.getTaskList();
-g.getConstruction();
+
 
 var curTime = function () {
   var today = new Date()

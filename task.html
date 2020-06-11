@@ -52,15 +52,15 @@
             </div>
             <div class="m-echarts center u-echarts-bg task">
                 <div class="title">任务当前进度</div>
-                <div class="work-progress">
-                    <p class="one"><span class="finish">待领取</span>
-                        <span class="finish">待勘查</span>
-                        <span class="active">待审核</span>
-                        <span>待试验</span></p>
-                    <p class="two"><span >完成</span>
-                        <span>待复核</span>
-                        <span >试验工作开始</span>
-                        <span >现场安全措施</span></p>
+                <div class="work-progress" id="progress">
+                    <p class="one"><span class="step0">待领取</span>
+                        <span class="step1">待勘查</span>
+                        <span class="step2">待审核</span>
+                        <span class="step3">待试验</span></p>
+                    <p class="two"><span class="step7">完成</span>
+                        <span  class="step6">待复核</span>
+                        <span class="step5">试验工作开始</span>
+                        <span class="step4">现场安全措施</span></p>
                 </div>
 
             </div>
@@ -94,14 +94,14 @@
                 </div>
                 <div id="scrollBox">
                     <div class="info" id="con1">
-                        <div class="map-tip"><span class="z-yellow">高(14:23:00)某某设备出现问题停工2小时<i
+                        <!-- <div class="map-tip"><span class="z-yellow">高(14:23:00)某某设备出现问题停工2小时<i
                                     class="time">12:30:20</i></span></div>
                         <div class="map-tip"><span class="z-red">中(14:32:30)车间李四误操作，引发安全事故<i
                                     class="time">12:30:20</i></span></div>
                         <div class="map-tip"><span class="z-yellow">高(14:23:00)某某设备出现问题停工2小时<i
                                     class="time">12:30:20</i></span></div>
                         <div class="map-tip"><span class="z-red">中(14:32:30)车间李四误操作，引发安全事故<i
-                                    class="time">12:30:20</i></span></div>
+                                    class="time">12:30:20</i></span></div> -->
                     </div>
                     <div class="info" id="con2">
 
@@ -146,7 +146,7 @@
     <script src="./js/countUp.js"></script>
     <script src="./js/setEchartsForTask.js"></script>
     <script src="./js/circle-progress.js"></script>
-    <script src="./js/getData.js"></script>
+    <script src="./js/getDataForTask.js"></script>
 
     <script>
         $(function () {

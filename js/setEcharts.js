@@ -417,7 +417,8 @@ var ech = {
       padding: [20],
       // borderColor:'',
       formatter: function (params) {
-        var tipHtml = '<div class="tip"><p class="tip-name">' + params.name + '</p><p class="tip-cont">' + params.data.taskName + '</p></div>';
+        console.log(params)
+        var tipHtml = '<div class="tip"><div class="tip-hd"><img src="'+ params.data.constructionPic+'"/></div><div  class="tip-bd"><p class="tip-name">' + params.name + '</p><p class="tip-cont">' + params.data.address + '</p></div></div>';
         return tipHtml
       }
     },
@@ -513,7 +514,7 @@ var ech = {
         //     formatter: '{b}',
         //     position: 'right',
         //     color: 'red',
-        //     show: false
+        //     show: true
         //   },
         //   emphasis: {
         //     show: false,
@@ -524,19 +525,7 @@ var ech = {
         //不同数据设置不同的颜色
         itemStyle: {
           normal: {
-            color: function (e) {
-              var data = e.data;
-              // console.log(e)
-              if (data.state == 7) {
-                return 'gray';
-              } else if (data.significanceDegree == '1') {
-                return 'green';
-              } else if (data.significanceDegree == '2') {
-                return 'orange';
-              } else if (data.significanceDegree == '3') {
-                return 'red';
-              }
-            }
+            color: '#57B1DA'
           }
         },
         // name: 'light',
@@ -610,17 +599,13 @@ var s = {
     var convertData = function (data) {
       var res = [];
       for (var i = 0; i < data.length; i++) {
-        /**
- * 紧要程度 1一般 2严重 3紧急
- * private String significanceDegree;
- */
-
         res.push({
-          name: data[i].circuitName,
-          value: data[i].latitudeAndLongitudeArray,
-          taskName: data[i].taskName,
-          significanceDegree: data[i].significanceDegree,
-          state: data[i].state,
+          name: data[i].constructionName,
+          value: data[i].longitudeAndLatitudeArray,
+          constructionPic:data[i].constructionPic,
+          address:data[i].address
+          // significanceDegree: data[i].significanceDegree,
+          // state: data[i].state,
         });
       }
       return res;
@@ -637,25 +622,44 @@ var s = {
     // });
     $.get('province/310000.json', function (geoJson) {
       echarts.registerMap('上海', geoJson);
+      console.log(convertData(obj))
       option.series[0].data = convertData(obj);
       // option.series[1].data = convertData(obj);
       MainMapchart.setOption(option)
     })
 
 
-    var MainMapIndex = 0; //播放所在下标
-    var MainMapTime = setInterval(function () {
-      MainMapchart.dispatchAction({
-        type: 'showTip',
-        seriesIndex: 0,
-        dataIndex: MainMapIndex
-      });
-      MainMapIndex++;
-      if (MainMapIndex > convertData(obj).length) {
-        MainMapIndex = 0;
-      }
-    }, 1000);
 
+    var MainMapTime = null;
+    var MainMapIndex = 0; //播放所在下标
+    var start = function () {
+      MainMapTime = setInterval(function () {
+        MainMapchart.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 0,
+          dataIndex: MainMapIndex
+        });
+        MainMapIndex++;
+        if (MainMapIndex > convertData(obj).length) {
+          MainMapIndex = 0;
+        }
+      }, 1000);
+    }
+
+    start();
+
+
+    MainMapchart.on('mouseover', function (params) {
+      clearInterval(MainMapTime)
+    });
+    MainMapchart.on('mouseout', function (params) {
+      clearInterval(MainMapTime)
+      start();
+    });
+    
+
+    // //在这里做一个点击事件的监听，绑定的是eConsole方法
+    // MainMapchart.on(ecConfig.EVENT.CLICK, eConsole);
 
     //捕捉georoam事件，使下层的geo随着上层的geo一起缩放拖曳
     // MainMapchart.on('georoam', function (params) {
