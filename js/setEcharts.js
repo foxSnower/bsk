@@ -418,7 +418,7 @@ var ech = {
       // borderColor:'',
       formatter: function (params) {
         console.log(params)
-        var tipHtml = '<div class="tip"><div class="tip-hd"><img src="'+ params.data.constructionPic+'"/></div><div  class="tip-bd"><p class="tip-name">' + params.name + '</p><p class="tip-cont">' + params.data.address + '</p></div></div>';
+        var tipHtml = '<div class="tip"><div class="tip-hd"><img src="' + params.data.constructionPic + '"/></div><div  class="tip-bd"><p class="tip-name">' + params.name + '</p><p class="tip-cont">' + params.data.address + '</p></div></div>';
         return tipHtml
       }
     },
@@ -525,7 +525,17 @@ var ech = {
         //不同数据设置不同的颜色
         itemStyle: {
           normal: {
-            color: '#57B1DA'
+            color: function (e) {
+              var data = e.data;
+              // console.log(e)
+              if (data.constructionLevel == 3) {
+                return 'green';
+              } else if (data.constructionLevel == 2) {
+                return 'orange';
+              } else if (data.constructionLevel == 1) {
+                return 'red';
+              }
+            }
           }
         },
         // name: 'light',
@@ -597,18 +607,12 @@ var s = {
   },
   MainMap: function (obj) {
     var convertData = function (data) {
-      var res = [];
+      // var res = [];
       for (var i = 0; i < data.length; i++) {
-        res.push({
-          name: data[i].constructionName,
-          value: data[i].longitudeAndLatitudeArray,
-          constructionPic:data[i].constructionPic,
-          address:data[i].address
-          // significanceDegree: data[i].significanceDegree,
-          // state: data[i].state,
-        });
+        data[i].name = data[i].constructionName;
+        data[i].value = data[i].longitudeAndLatitudeArray;
       }
-      return res;
+      return data;
     };
     // 基于准备好的dom，初始化echarts实例
     MainMapchart = echarts.init(document.getElementById('MainMap'));
@@ -656,8 +660,69 @@ var s = {
       clearInterval(MainMapTime)
       start();
     });
-    
-
+    //点击展示详情
+    MainMapchart.on('click', function (params) {
+      clearInterval(MainMapTime)
+      console.log(params.data)
+      var paramsData = params.data;
+      var htmlDetail = '';
+      var LevelText = '';
+      var progressText = '';
+      if (paramsData.constructionLevel == 1) {
+        LevelText = '一级';
+      } else if (paramsData.constructionLevel == 2) {
+        LevelText = '二级';
+      } else if (paramsData.constructionLevel == 2) {
+        LevelText = '三级';
+      } else {
+        LevelText = paramsData.constructionLevel;
+      }
+      if (paramsData.projectSchedule == 0) {
+        progressText = '暂停';
+      } else if (paramsData.projectSchedule == 1) {
+        progressText = '施工中';
+      } else if (paramsData.projectSchedule == -1) {
+        progressText = '未开工';
+      } else {
+        progressText = paramsData.projectSchedule;
+      }
+      if (paramsData != undefined) {
+        htmlDetail = '<div class="map-detail"><div class="f-flex-box">' +
+          '<div class="flex">' +
+          '<div class="img">' +
+          '<img src="' + paramsData.constructionPic + '">' +
+          '<div class="text">' + paramsData.constructionName + '</div>' +
+          '</div>' +
+          '</div>' +
+          '<div class="detail">' +
+          '<p>等级：' + LevelText + '</p>' +
+          '<p>绿卡编号：' + paramsData.greenCode + '</p>' +
+          '<p>工地性质：' + paramsData.constructionNature + '</p>' +
+          '<p>施工单位：' + paramsData.roadworkUnit + '</p>' +
+          '<p>联系人：' + paramsData.contactPhone + '</p>' +
+          '<p>地点：' + paramsData.address + '</p>' +
+          '<p>相关线路：' + paramsData.correlationCircuit + '</p>' +
+          '<p>最高电压等级（kV）：' + paramsData.maxVoltageLevel + 'kV</p>' +
+          '<p>蹲守人员：' + paramsData.keepWatchPerson + '</p>' +
+          '<p>监控情况：' + paramsData.monitoringCondition + '</p>' +
+          '<p>保护措施情况：' + paramsData.protectMeasures + '</p>' +
+          '<p>进入围挡情况：' + paramsData.entranceFenceCondition + '</p>' +
+          '<p>拟工程危险点：' + paramsData.simulationProjectRisk + '</p>' +
+          '<p>工程进度：' + progressText + '</p>' +
+          '<p>风险评估：' + paramsData.riskAssessment + '</p>' +
+          '<p>设备主人：' + paramsData.equipmentOwners + '</p>' +
+          '<p>通道情况：' + paramsData.channelCondition + '</p>' +
+          '</div>' +
+          '</div>' +
+          '<div class="close" id="close"></div>' +
+          '</div>';
+        $("#MapDetail").html(htmlDetail);
+        $("#MapDetail").css("display", "block");
+        $("#close").click(function () {
+          $("#MapDetail").css("display", "none");
+        })
+      }
+    });
     // //在这里做一个点击事件的监听，绑定的是eConsole方法
     // MainMapchart.on(ecConfig.EVENT.CLICK, eConsole);
 
