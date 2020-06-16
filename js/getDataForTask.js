@@ -18,26 +18,27 @@ var g = {
   getTaskList: function () {
     getData('/cable/task/getTaskAll', function (res) {
       s.MainMap(res.data);
-      var mapData=res.data;
+      setProgress(res.data);
+      var mapData = res.data;
       var dataLength = mapData.length;
       var addHtml = '';
-      var boxClass = ''; 
-      var significanceDegreeText=''
-      for(var i=0;i<dataLength;i++){
-         if(mapData[i].state!=7){
-          if(mapData[i].significanceDegree=='1'){
-            boxClass='z-green';
-            
-          }else if(mapData[i].significanceDegree=='2'){
-            boxClass='z-yellow';
-            
-          }else if(mapData[i].significanceDegree=='3'){
-            boxClass='z-red';
-           
+      var boxClass = '';
+      var significanceDegreeText = ''
+      for (var i = 0; i < dataLength; i++) {
+        if (mapData[i].state != 7) {
+          if (mapData[i].significanceDegree == '1') {
+            boxClass = 'z-green';
+
+          } else if (mapData[i].significanceDegree == '2') {
+            boxClass = 'z-yellow';
+
+          } else if (mapData[i].significanceDegree == '3') {
+            boxClass = 'z-red';
+
           }
           console.log(i)
-          addHtml += '<div class="map-tip"><span class="'+boxClass+'">'+mapData[i].taskName+'<i class="time">'+mapData[i].createTime+'</i></span></div>'
-         }
+          addHtml += '<div class="map-tip"><span class="' + boxClass + '">' + mapData[i].taskName + '<i class="time">' + mapData[i].createTime + '</i></span></div>'
+        }
       }
       $("#con1").html(addHtml);
       // console.log(res)
@@ -48,6 +49,8 @@ var g = {
 
 
 g.getTaskList();
+
+
 
 
 var curTime = function () {
@@ -63,3 +66,43 @@ var curTime = function () {
 
 };
 
+
+
+var setProgress = function (data) {
+  var taskId = window.localStorage.getItem("taskId");
+  if (taskId != undefined) {
+    for (var j = 0; j < data.length; j++) {
+      // debugger
+      if (data[j].taskId == taskId) {
+        for (var i = 0; i <= 7; i++) {
+          if (i <= data[j].state) {
+            $('.step' + (i - 1)).addClass('finish');
+          } else {
+            $('.step' + (i - 1)).removeClass('finish');
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+var getDataTime = null;
+var start = function () {
+  getDataTime = setInterval(function () {
+    g.getTaskList();
+    // console.log(data == data1)
+    // if (data == data1) {
+    //   data = data2;
+    //   s.MainMap(data);
+    //   setProgress();
+    // } else {
+    //   data = data1;
+    //   s.MainMap(data);
+    //   setProgress();
+    // }
+
+  }, 5000);
+}
+start();

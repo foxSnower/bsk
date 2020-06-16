@@ -571,7 +571,7 @@ var ech = {
             // borderColor:'',
             formatter: function (params) {
                 // console.log(params)
-                var tipHtml = '<div class="tip"><p class="tip-name">' + params.data.taskName  + '</p><p class="tip-cont">' + params.data.stateName + '</p></div>';
+                var tipHtml = '<div class="tip"><p class="tip-name">' + params.data.taskName + '</p><p class="tip-cont">' + params.data.stateName + '</p></div>';
                 return tipHtml
             }
         },
@@ -661,7 +661,7 @@ var ech = {
             }],
         series: [
             {
-                symbolSize: 10,
+                symbolSize: 20,
                 // label: {
                 //   normal: {
                 //     formatter: '{b}',
@@ -788,31 +788,27 @@ var s = {
     },
     MainMap: function (obj) {
         var convertData = function (data) {
-            var res = [];
+            // var res = [];
             var stateName = '';
             for (var i = 0; i < data.length; i++) {
                 /**
                  *  任务状态 0.待领取 1.待勘察 2.待审核 3.待试验 4.现场安全措施 5.实验工作开始 6待复核7 完成
                  */
 
-                if(data[i].state==0) stateName='待领取';
-                if(data[i].state==1) stateName='待勘察';
-                if(data[i].state==2) stateName='待审核';
-                if(data[i].state==3) stateName='待试验';
-                if(data[i].state==4) stateName='现场安全措施';
-                if(data[i].state==5) stateName='实验工作开始';
-                if(data[i].state==6) stateName='待复核';
-                if(data[i].state==7) stateName='完成';
-                res.push({
-                    name: data[i].circuitName,
-                    value: data[i].latitudeAndLongitudeArray,
-                    taskName: data[i].taskName,
-                    significanceDegree: data[i].significanceDegree,
-                    state: data[i].state,
-                    stateName: stateName
-                });
+                if (data[i].state == 0) stateName = '待领取';
+                if (data[i].state == 1) stateName = '待勘察';
+                if (data[i].state == 2) stateName = '待审核';
+                if (data[i].state == 3) stateName = '待试验';
+                if (data[i].state == 4) stateName = '现场安全措施';
+                if (data[i].state == 5) stateName = '实验工作开始';
+                if (data[i].state == 6) stateName = '待复核';
+                if (data[i].state == 7) stateName = '完成';
+                data[i].name = data[i].circuitName;
+                data[i].value = data[i].latitudeAndLongitudeArray;
+                data[i].stateName = stateName;
+
             }
-            return res;
+            return data;
         };
         // 基于准备好的dom，初始化echarts实例
         MainMapchart = echarts.init(document.getElementById('MainMap'));
@@ -836,6 +832,7 @@ var s = {
 
         var MainMapTime = null;
         var MainMapIndex = 0; //播放所在下标
+        clearInterval(MainMapTime);
         var start = function () {
             MainMapTime = setInterval(function () {
                 MainMapchart.dispatchAction({
@@ -850,7 +847,7 @@ var s = {
             }, 1000);
         }
 
-        start();
+        // start();
 
 
         MainMapchart.on('mouseover', function (params) {
@@ -858,79 +855,31 @@ var s = {
         });
         MainMapchart.on('mouseout', function (params) {
             clearInterval(MainMapTime)
-            start();
+            // start();
         });
         MainMapchart.on('mousedown', function (params) {
             clearInterval(MainMapTime)
-            if(params.data!=undefined){
-                for(var i=0;i<=7;i++){
-                    if(i<=params.data.state){
-                        $('.step'+(i-1)).addClass('finish');
-                    }else{
-                        $('.step'+(i-1)).removeClass('finish');
+  
+            if (params.data != undefined) {
+                console.log(params.data)
+
+                
+                window.localStorage.setItem("taskId", params.data.taskId);
+                for (var i = 0; i <= 7; i++) {
+                    if (i <= params.data.state) {
+                        $('.step' + (i - 1)).addClass('finish');
+                    } else {
+                        $('.step' + (i - 1)).removeClass('finish');
                     }
-                    
+
                 }
-                // if(params.data.state==0){
 
-                //     $('.step1').addClass('finish');
-
-                // } 
-                // if(params.data.state==1) {
-                //     $('.step1').addClass('finish');
-                //     $('.step2').addClass('finish');
-                // }
-                // if(params.data.state==2) {
-                //     $('.step1').addClass('finish');
-                //     $('.step2').addClass('finish');
-                //     $('.step3').addClass('finish');
-                // }
-                // if(params.data.state==3) {
-                //     $('.step1').addClass('finish');
-                //     $('.step2').addClass('finish');
-                //     $('.step3').addClass('finish');
-                //     $('.step4').addClass('finish');
-                // }
-                // if(params.data.state==4) {
-                //     $('.step1').addClass('finish');
-                //     $('.step2').addClass('finish');
-                //     $('.step3').addClass('finish');
-                //     $('.step4').addClass('finish');
-                //     $('.step5').addClass('finish');
-                // }
-                // if(params.data.state==5) {
-                //     $('.step1').addClass('finish');
-                //     $('.step2').addClass('finish');
-                //     $('.step3').addClass('finish');
-                //     $('.step4').addClass('finish');
-                //     $('.step5').addClass('finish');
-                //     $('.step6').addClass('finish');
-                // }
-                // if(params.data.state==6) {
-                //     $('.step1').addClass('finish');
-                //     $('.step2').addClass('finish');
-                //     $('.step3').addClass('finish');
-                //     $('.step4').addClass('finish');
-                //     $('.step5').addClass('finish');
-                //     $('.step6').addClass('finish');
-                //     $('.step7').addClass('finish');
-                // }
-                // if(params.data.state==7) {
-                //     $('.step1').addClass('finish');
-                //     $('.step2').addClass('finish');
-                //     $('.step3').addClass('finish');
-                //     $('.step4').addClass('finish');
-                //     $('.step5').addClass('finish');
-                //     $('.step6').addClass('finish');
-                //     $('.step7').addClass('finish');
-                //     $('.step8').addClass('finish');
-                // }
             }
         });
 
 
-  
-        
+
+
 
         //捕捉georoam事件，使下层的geo随着上层的geo一起缩放拖曳
         // MainMapchart.on('georoam', function (params) {

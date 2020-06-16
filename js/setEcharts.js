@@ -508,7 +508,7 @@ var ech = {
       }],
     series: [
       {
-        symbolSize: 10,
+        symbolSize: 20,
         // label: {
         //   normal: {
         //     formatter: '{b}',
@@ -663,30 +663,30 @@ var s = {
     //点击展示详情
     MainMapchart.on('click', function (params) {
       clearInterval(MainMapTime)
-      console.log(params.data)
       var paramsData = params.data;
-      var htmlDetail = '';
-      var LevelText = '';
-      var progressText = '';
-      if (paramsData.constructionLevel == 1) {
-        LevelText = '一级';
-      } else if (paramsData.constructionLevel == 2) {
-        LevelText = '二级';
-      } else if (paramsData.constructionLevel == 2) {
-        LevelText = '三级';
-      } else {
-        LevelText = paramsData.constructionLevel;
-      }
-      if (paramsData.projectSchedule == 0) {
-        progressText = '暂停';
-      } else if (paramsData.projectSchedule == 1) {
-        progressText = '施工中';
-      } else if (paramsData.projectSchedule == -1) {
-        progressText = '未开工';
-      } else {
-        progressText = paramsData.projectSchedule;
-      }
+      // alert(paramsData)
       if (paramsData != undefined) {
+        var htmlDetail = '';
+        var LevelText = '';
+        var progressText = '';
+        if (paramsData.constructionLevel == 1) {
+          LevelText = '一级';
+        } else if (paramsData.constructionLevel == 2) {
+          LevelText = '二级';
+        } else if (paramsData.constructionLevel == 2) {
+          LevelText = '三级';
+        } else {
+          LevelText = paramsData.constructionLevel;
+        }
+        if (paramsData.projectSchedule == 0) {
+          progressText = '暂停';
+        } else if (paramsData.projectSchedule == 1) {
+          progressText = '施工中';
+        } else if (paramsData.projectSchedule == -1) {
+          progressText = '未开工';
+        } else {
+          progressText = paramsData.projectSchedule;
+        }
         htmlDetail = '<div class="map-detail"><div class="f-flex-box">' +
           '<div class="flex">' +
           '<div class="img">' +
