@@ -494,7 +494,7 @@ var ech = {
                 show: false,
                 // alignWithLabel: true,
             },
-            data: ['红外测温', '耐压测温', '通道施工', '测验']
+            data: ['红外测温', '耐压测温', '通道施工', '测绘']
         },
         yAxis: {
             type: 'value',
