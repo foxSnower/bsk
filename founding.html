@@ -11,6 +11,7 @@
 
 
 <body class="g-bg">
+
   <div class="g-header">
     <div class="logo"></div>
     <div class="g-up">
@@ -18,6 +19,7 @@
     </div>
   </div>
   <div class="g-body">
+   
     <div class="g-left">
       <div class="top">
         <div class="hd">
@@ -29,8 +31,8 @@
             <div class="strt-part">
               <span class="strt-name one">电缆运检中心党总支</span>
               <div class="line-v"><span></span></div>
-              <div class="strt-block">
-                <div class="strt-part">
+              <div class="strt-block" id="PoliticsGroup">
+                <!-- <div class="strt-part">
                   <span class="line-h line-h-r"></span>
                   <div class="line-v"><span></span></div>
                   <span class="strt-name two">第一党支部</span>
@@ -66,7 +68,7 @@
                       <span class="strt-name  three">第二党小组</span>
                     </div>
                   </div>
-                </div>
+                </div> -->
 
               </div>
             </div>
@@ -74,7 +76,8 @@
           </div>
         </div>
       </div>
-      <div class="founding-name">
+      <div class="founding-name" id="userList">
+        <!-- <div class="name active">陈立荣</div>
         <div class="name">陈立荣</div>
         <div class="name">陈立荣</div>
         <div class="name">陈立荣</div>
@@ -83,18 +86,20 @@
         <div class="name">陈立荣</div>
         <div class="name">陈立荣</div>
         <div class="name">陈立荣</div>
-        <div class="name">陈立荣</div>
-        <div class="name">陈立荣</div>
+        <div class="name">陈立荣</div> -->
       </div>
       <div class="progress-box">
         <div class="progress">
-          <span class="name">总人数：</span><span class="progress-bar"><i>2557人</i><b style="width:100%;"> </b></span>
+          <span class="name">总人数：</span><span class="progress-bar"><i id="all">2557人</i><b style="width:100%;">
+            </b></span>
         </div>
         <div class="progress">
-          <span class="name">党员人数：</span><span class="progress-bar"><i>57人</i><b style="width:30%;"> </b></span>
+          <span class="name">党员人数：</span><span class="progress-bar"><i id="userNumber">57人</i><b
+              class="userNumberLength" style="width:30%;"> </b></span>
         </div>
         <div class="progress">
-          <span class="name">党员占比：</span><span class="progress-bar"><i>59%</i><b style="width:65%;"> </b></span>
+          <span class="name">党员占比：</span><span class="progress-bar"><i id="userNumberLength">59%</i><b
+              class="userNumberLength" style="width:65%;"> </b></span>
         </div>
       </div>
     </div>
@@ -103,11 +108,11 @@
       <div class="progress-box">
         <img class="top-icon" src="img/top.png" alt="">
         <div class="progress">
-          <span class="name">重要任务参与度</span><span class="progress-bar"><i>85%</i><b style="width:85%;"> </b></span>
+          <span class="name">重要任务参与度</span><span class="progress-bar"><i>100%</i><b style="width:100%;"> </b></span>
         </div>
         <div class="title">重要任务完成度</div>
         <img class="title-icon" src="img/faa.png" alt="">
-        <div class="cont">
+        <div class="cont" id="task">
           <p>1)完成道路两侧电力箱体全要素整治工作<span> 80%</span></p>
           <p>2)打造架空线入地民心工程<span> 80%</span></p>
           <p>3)世博隧道运维管理<span> 80%</span></p>
@@ -132,48 +137,68 @@
       <div class="m-echarts top">
         <div class="ech-map" id="MainMap"></div>
       </div>
+      <div class="bottom">
+        <span class="icon"></span>
+        <p>我志愿加入中国共产党，拥护党党纲领，遵守党党章程，履行党员义务，执行党党决定，严守党的纪律，保守党党秘密，对党忠诚，积极工作，为共产主义奋斗终身，随时准备为党和人民牺牲一切，永不叛党</p>
+      </div>
     </div>
-  </div>
-  <div id="MapDetail" style="display: none;">
-    <!-- <div class="f-flex-box">
-        <div class="flex">
-          <div class="img">
-            <img src="./img/map-detail.png">
-            <div class="text">涞寅路雨水管建设工程</div>
-          </div>
+
+    <div class="user-info" style="display: none;">
+      <span class="close"></span>
+      <div class="f-flex-box">
+        <div class="img" id="timeLineImg">
+          <!-- <img src="./img/map-detail-close.png" /> -->
         </div>
-        <div class="detail">
-          <p>等级：二级</p>
-          <p>绿卡编号：0131303</p>
-          <p>等级：二级</p>
-          <p>绿卡编号：0131303</p>
-          <p>等级：二级</p>
-          <p>绿卡编号：0131303</p>
-          <p>等级：二级</p>
-          <p>绿卡编号：0131303</p>
-          <p>等级：二级</p>
-          <p>绿卡编号：0131303</p>
-          <p>等级：二级</p>
-          <p>绿卡编号：0131303</p>
-          <p>等级：二级</p>
-          <p>绿卡编号：0131303</p>
-          <p>等级：二级</p>
-          <p>相关线路：通寅1717、1721、寅望1735、1734、
-            盛湖1R023、1R024</p>
+        <div class="info f-flex">
+          <p class="name" id="timeLineName">陈立荣</p>
+          <p id="timeLinePosition">党支部职务</p>
         </div>
-      </div> -->
+
+      </div>
+      <div class="timeline-small">
+        <div class="timeline-small-body">
+          <ul id="timeLine">
+            <!-- <li>
+              <div class="bullet pink"></div>
+              <div class="desc">
+                <h3>内容段落1</h3>
+                <h4>内容段落2内容段落2内容段落2内容段落2</h4>
+              </div>
+            </li>
+            <li>
+              <div class="bullet pink"></div>
+              <div class="desc">
+                <h3>内容段落1</h3>
+                <h4>内容段落2内容段落2内容段落2内容段落2</h4>
+              </div>
+            </li>
+            <li>
+              <div class="bullet pink"></div>
+              <div class="desc">
+                <h3>内容段落1</h3>
+                <h4>内容段落2内容段落2内容段落2内容段落2</h4>
+              </div>
+            </li>
+            <li>
+              <div class="bullet pink"></div>
+              <div class="desc">
+                <h3>内容段落1</h3>
+                <h4>内容段落2内容段落2内容段落2内容段落2</h4>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
 
   </div>
-  <!-- <div class="g-map">
-    <div class="map" id="MainMap"></div>
-  </div> -->
-  <script src="./js/echarts.min.js"></script>
-  <script src="./js/echarts-gl.min.js"></script>
+  <script src="./js/echarts.min0.js"></script>
+  <!-- <script src="./js/echarts-gl.min.js"></script> -->
   <script src="./js/jquery-1.9.1.min.js"></script>
-  <!-- <script src="./js/countUp.js"></script> -->
   <script src="./js/setEchartsForFounding.js"></script>
-  <!-- <script src="./js/circle-progress.js"></script> -->
-  <!-- <script src="./js/getData.js"></script> -->
+  <script src="./js/getDataForFounding.js"></script>
 
   <script>
     $(function () {
@@ -181,31 +206,11 @@
       var S_height = window.screen.availHeight;
       $('.g-bg').css("width", S_width + 'px');
       $('.g-bg').css("height", S_height + 'px');
-      $('#MainMap').css("height", S_height/2 + 'px');
-    
-      s.MainMap();
-      // /*让文字和标签的大小随着屏幕的尺寸变化 等比缩放*/
-      // var html = document.getElementsByTagName('html')[0];
-
-      // /*取到屏幕的宽度*/
-      // var width = window.innerWidth;
-      // var fontSize = 100 / 640 * width;
-      // html.style.fontSize = fontSize + 'px';
-      // window.onresize = function () {
-      //   var html = document.getElementsByTagName('html')[0];
-
-      //   var width = window.innerWidth;
-
-      //   var fontSize = 100 / 640 * width;
-      //   /*设置fontSize*/
-      //   html.style.fontSize = fontSize + 'px';
-      // }
+      // $('#MainMap').css("height", S_height/2 + 'px');
 
 
     })
   </script>
-</body>
-
 
 </body>
 

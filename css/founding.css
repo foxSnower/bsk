@@ -21,7 +21,7 @@ ul { list-style: none; }
 .g-body .g-left .strt-name { color: #fff; background: #C91424; padding: 10px; border-radius: 30px; display: inline-block; height: 24px; line-height: 24px; margin: 0 5px; }
 .g-body .g-left .strt-name.one { padding: 10px 30px; }
 .g-body .g-left .strt-name.two { padding: 10px 20px; }
-.g-body .g-left .strt-name.three { background: rgba(201, 20, 36, 0.75); }
+.g-body .g-left .strt-name.three { background: rgba(201, 20, 36, 0.75); cursor: pointer; }
 .g-body .g-left .strt-name.three.active { background: #c91424; }
 .g-body .g-left .strt-part .line-h { border-top: 2px dashed #C91424; display: block; background: #ccc; position: absolute; top: 0; font-size: 0; }
 .g-body .g-left .strt-part .line-h-l { width: 50%; left: 0; }
@@ -29,7 +29,8 @@ ul { list-style: none; }
 .g-body .g-left .strt-part .line-h-r { width: 50%; right: 0; }
 .g-body .g-left .strt-block { float: left; }
 .g-body .g-left .founding-name { width: 95%; margin: 0 auto; background-color: #f2ced2; height: 150px; border-radius: 10px; }
-.g-body .g-left .founding-name .name { line-height: 30px; float: left; width: 20%; margin-top: 15px; margin-left: 4%; background: rgba(201, 20, 36, 0.75); color: #fff; text-align: center; border-radius: 25px; font-size: 12px; }
+.g-body .g-left .founding-name .name { line-height: 30px; float: left; width: 20%; margin-top: 15px; margin-left: 4%; background: rgba(201, 20, 36, 0.75); color: #fff; text-align: center; border-radius: 25px; font-size: 12px; cursor: pointer; }
+.g-body .g-left .founding-name .name.active { background: #c91424; }
 .g-body .g-left .ech { width: 100%; height: 130px; }
 .g-body .g-right { float: right; height: 100%; }
 .g-body .g-right .progress-box { position: relative; margin-top: 8px; }
@@ -37,11 +38,14 @@ ul { list-style: none; }
 .g-body .g-right .progress-box .progress-bar { width: 40%; }
 .g-body .g-right .progress-box .title { color: #D11C1B; text-align: center; font-size: 16px; margin-top: 20px; }
 .g-body .g-right .progress-box .title-icon { width: 70%; margin: 0 auto; display: block; margin: 10px auto; }
-.g-body .g-right .progress-box .cont { width: 90%; margin: 0 auto; }
+.g-body .g-right .progress-box .cont { width: 95%; margin: 0 auto; }
 .g-body .g-right .progress-box .cont p { height: 32px; line-height: 32px; }
 .g-body .g-right .progress-box .cont p span { padding-left: 15px; color: #D11C1B; }
-.g-body .g-center { margin-top: 0.3%; height: 100%; overflow: hidden; }
-.g-body .g-center .ech-map { background: url(../img/map.png) no-repeat; background-position: center; background-size: 100% 100%; }
+.g-body .g-center { position: relative; margin-top: 0.3%; height: 100%; overflow: hidden; }
+.g-body .g-center .ech-map { height: 700px; }
+.g-body .g-center .bottom { position: absolute; bottom: 0; background: url(../img/bg_one.png) no-repeat; background-position: center; background-size: 100% 100%; margin: 0 30px; }
+.g-body .g-center .bottom p { font-size: 18px; color: #fff; padding: 25px; padding-right: 75px; }
+.g-body .g-center .bottom .icon { position: absolute; width: 50px; height: 50px; top: -25px; left: -25px; background: url(../img/logo.png) no-repeat; background-position: center; background-size: 100% 100%; }
 .g-body .progress-box { padding: 10px 20px; margin: 0 10px; margin-top: 40px; border: 2px solid #C91624; }
 .g-body .progress { position: relative; width: 100%; margin-top: 10px; overflow: hidden; }
 .g-body .progress .name { float: left; font-size: 16px; color: #373737; }
@@ -49,5 +53,60 @@ ul { list-style: none; }
 .g-body .progress-bar { background-position: 0 0; height: 10px; border-radius: 10px; width: 55%; background: transparent; text-align: right; margin-right: 20%; float: right; position: relative; top: 6px; }
 .g-body .progress-bar i { position: absolute; font-style: normal; font-size: 12px; width: 50px; top: -3px; right: -63px; }
 .g-body .progress-bar b { background-position: 0 -17px; height: 10px; border-radius: 10px; }
+.g-body .user-info { position: fixed; min-width: 500px; min-height: 100px; background: #fff; left: 50%; top: 50%; margin-left: -250px; margin-top: -200px; border-radius: 10px; }
+.g-body .user-info .close { width: 22px; height: 22px; position: absolute; top: 10px; right: 10px; background: url(../img/close.png) no-repeat; background-position: center; background-size: 100% 100%; }
+.g-body .user-info .f-flex-box { display: flex; }
+.g-body .user-info .f-flex-box .f-flex { flex: 1; }
+.g-body .user-info .f-flex-box .info { padding-top: 30px; line-height: 2; }
+.g-body .user-info .f-flex-box .info .name { font-weight: 700; font-size: 16px; }
+.g-body .user-info .f-flex-box .img { margin: 20px 40px; width: 80px; height: 80px; border-radius: 80px; margin-bottom: 0; background-color: #d5404d; }
+.g-body .user-info .f-flex-box .img img { width: 100%; height: 100%; }
+
+.timeline-small { overflow: hidden; margin: 0 48px; margin-bottom: 20px; }
+
+.timeline-small-body ul { padding: 1em 0 0 2em; margin: 0; list-style: none; position: relative; }
+
+.timeline-small-body ul::before { content: ' '; height: 50%; width: 2px; background: linear-gradient(to bottom, #C91323, #fff); position: absolute; bottom: 0; left: 31px; z-index: -1; }
+
+.timeline-small-body ul::after { content: ' '; height: 50%; width: 2px; background: linear-gradient(to top, #C91323, #fff); position: absolute; top: 0; left: 31px; z-index: -1; }
+
+.timeline-small-body li div { display: inline-block; margin: 1em 0; vertical-align: top; }
+
+.timeline-small-body .bullet { width: 8px; height: 8px; box-sizing: border-box; border-radius: 50%; background: #fff; z-index: 1; margin-right: 8px; margin-top: 7%; }
+
+.timeline-small-body .bullet.pink { background-color: #C91323; box-shadow: 0 0 10px #C91323; }
+
+.timeline-small-body .bullet.green { background-color: lightseagreen; border: 3px solid #B0E8E2; }
+
+.timeline-small-body .bullet.blue { background-color: aquamarine; border: 3px solid cadetblue; }
+
+.timeline-small-body .bullet.orange { background-color: salmon; border: 3px solid #EB8B6E; }
+
+.timeline-small-body .date { width: 23%; font-size: 0.75em; padding-top: 0.40rem; padding-right: 2rem; }
+
+.timeline-small-body .desc { width: 90%; padding-left: 10px; }
+
+.timeline-small-body h3 { font-size: 16px; font-weight: 400; margin: 0; color: #C91323; }
+
+.timeline-small-body h4 { margin: 0; font-size: 16px; font-weight: 400; color: #747474; }
+
+@media screen and (max-device-width: 1300px) { .g-bg { font-size: 12px; }
+  .g-bg .g-up .hd { font-size: 45px; }
+  .g-body .g-left, .g-body .g-right { min-width: 350px; }
+  .g-body .g-left .top .hd { line-height: 44px; font-size: 18px; }
+  .g-body .g-left .top .hd .img { width: 57px; height: 44px; }
+  .g-body .g-left .strt-name { height: 20px; line-height: 20px; margin: 0 2px; }
+  .g-body .g-left .strt-part .line-v { height: 25px; }
+  .g-body .g-left .strt-part .line-v span { height: 25px; }
+  .g-body .progress-box { margin-top: 25px; }
+  .g-body .progress .name { font-size: 14px; }
+  .g-body .progress-bar { top: 5px; }
+  .g-body .progress-bar i { right: -55px; }
+  .g-body .g-right .progress-box .cont p { height: 29px; line-height: 29px; }
+  .g-body .g-center { margin-top: 2.4%; }
+  .g-body .g-center .ech-map { height: 605px; }
+  .g-body .g-center .bottom p { font-size: 14px; padding-right: 42px; }
+  .timeline-small-body ul::before { left: 27px; }
+  .timeline-small-body ul::after { left: 27px; } }
 
 /*# sourceMappingURL=founding.css.map */
