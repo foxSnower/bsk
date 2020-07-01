@@ -58,7 +58,7 @@ var g = {
                         isActive = '';
                     }
                     addhtml2 += '<div class="strt-part"><span class="line-h ' + linePosition2 + '"></span><div class="line-v"><span></span></div>' +
-                        '<span class="strt-name three ' + isActive + '">' + cablePoliticsGroupList[j].politicsGroupName + '</div>';
+                        '<span class="strt-name three ' + isActive + '" politicsGroupId="'+cablePoliticsGroupList[j].politicsGroupId+'">' + cablePoliticsGroupList[j].politicsGroupName + '</div>';
 
                 }
                 //第二层
@@ -75,6 +75,28 @@ var g = {
             $('.three').click(function () {
                 $('.three').removeClass('active');
                 $(this).addClass('active');
+                var politicsGroupId= $(this).attr('politicsGroupId');
+                var curUserList=[];
+                var curUserListHtml='';
+                for (var i = 0; i < resDataLength; i++) {
+                    //第二层
+                    var cablePoliticsGroupList = resArr[i].cablePoliticsGroupList;
+                    var cablePoliticsGroupListLength = cablePoliticsGroupList.length;
+                    for (var j = 0; j < cablePoliticsGroupListLength; j++) {
+                        if(politicsGroupId==cablePoliticsGroupList[j].politicsGroupId){
+                            curUserList = cablePoliticsGroupList[j].userList;
+                        }
+                    }
+                }
+                for (var k = 0; k < curUserList.length; k++) {
+                    curUserListHtml += '<div class="name" userId="'+curUserList[k].userId+'">' + curUserList[k].userName + '</div>'
+                }
+                $("#userList").html(curUserListHtml);
+                $('#userList .name').click(function () {
+                    $('#userList .name').removeClass('active');
+                    $(this).addClass('active');
+                    g.getTaskLog($(this).attr('userId'));
+                })
             })
 
             $('#userList .name').click(function () {
@@ -82,8 +104,6 @@ var g = {
                 $(this).addClass('active');
                 g.getTaskLog($(this).attr('userId'));
             })
-            
-            console.log(addhtml1)
         })
     },
     getBoardUserNumber: function () {

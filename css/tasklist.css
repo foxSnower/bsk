@@ -1,0 +1,52 @@
+* { padding: 0; margin: 0; -ms-touch-action: manipulation; /* IE10  */ touch-action: manipulation; /* IE11+ */ }
+
+html, body { width: 100%; }
+
+ul { list-style: none; }
+
+.g-bg { background: #070F29; font-size: 14px; color: #00f6fe; font-family: 'Microsoft YaHei'; background: url(../img/tasklist/bg.png) no-repeat; background-position: center; background-size: 100% 100%; background-attachment: fixed; overflow: hidden; }
+.g-bg .g-header { position: relative; width: 100%; }
+.g-bg .g-header .g-up { text-align: center; font-size: 40px; font-weight: 700; color: #fff; height: 90px; line-height: 90px; background: url(../img/tasklist/nav.png) no-repeat; background-position: center; background-size: auto 100%; letter-spacing: 5px; }
+.g-bg .g-body { display: flex; }
+.g-bg .g-body .g-left { display: flex; width: 45%; min-width: 500px; height: 600px; margin-top: 60px; }
+.g-bg .g-body .g-left .m-left { position: relative; width: 300px; }
+.g-bg .g-body .g-left .m-left .img { position: absolute; top: 50%; margin-top: -125px; left: 50%; margin-left: -125px; width: 250px; height: 250px; background: url(../img/tasklist/big-total.png) no-repeat; background-position: center; background-size: auto 100%; }
+.g-bg .g-body .g-left .m-left .img::before { content: ''; position: absolute; width: 8px; height: 8px; background-color: #03fcfe; left: 190px; top: 35px; border-radius: 8px; }
+.g-bg .g-body .g-left .m-left .img::after { content: ''; position: absolute; width: 8px; height: 8px; background-color: #03fcfe; left: 182px; bottom: 27px; border-radius: 8px; }
+.g-bg .g-body .g-left .m-left .img span { width: 100px; height: 60px; line-height: 60px; position: absolute; top: 50%; margin-top: -30px; left: 50%; margin-left: -50px; font-size: 45px; text-align: center; }
+.g-bg .g-body .g-left .m-right { flex: 1; height: 600px; padding-left: 100px; }
+.g-bg .g-body .g-left .m-right .box { position: relative; display: flex; height: 200px; }
+.g-bg .g-body .g-left .m-right .box .hd { width: 150px; position: relative; }
+.g-bg .g-body .g-left .m-right .box .hd::before { content: ''; position: absolute; width: 8px; height: 8px; background-color: #03fcfe; left: -145px; top: 50%; border-radius: 8px; margin-top: -4px; }
+.g-bg .g-body .g-left .m-right .box .hd::after { content: ''; position: absolute; width: 160px; height: 1px; background-color: #03fcfe; left: -140px; top: 50%; margin-top: -0.5px; }
+.g-bg .g-body .g-left .m-right .box .hd.one::before { content: ''; width: 120px; height: 1px; transform: rotate(-70deg); left: -220px; top: 160px; }
+.g-bg .g-body .g-left .m-right .box .hd.three::before { content: ''; width: 120px; height: 1px; transform: rotate(-115deg); left: -225px; top: 50px; }
+.g-bg .g-body .g-left .m-right .box .hd .img { position: absolute; top: 50%; margin-top: -75px; left: 50%; margin-left: -75px; width: 150px; height: 150px; background: url(../img/tasklist/total.png) no-repeat; background-position: center; background-size: auto 100%; cursor: pointer; }
+.g-bg .g-body .g-left .m-right .box .hd .img span { width: 100px; height: 60px; line-height: 60px; position: absolute; top: 50%; margin-top: -30px; left: 50%; margin-left: -50px; font-size: 24px; text-align: center; }
+.g-bg .g-body .g-left .m-right .box .bd { flex: 1; position: relative; }
+.g-bg .g-body .g-left .m-right .box .bd::before { content: ''; position: absolute; width: 8px; height: 8px; background-color: #03fcfe; left: -19px; top: 50%; border-radius: 8px; margin-top: -4px; }
+.g-bg .g-body .g-left .m-right .box .bd::after { content: ''; position: absolute; width: 40px; height: 1px; background-color: #03fcfe; left: -18px; top: 50%; margin-top: -0.5px; }
+.g-bg .g-body .g-left .m-right .box .bd .cont-box { position: absolute; top: 50%; margin-top: -85px; width: 240px; height: 170px; background: url(../img/tasklist/box2.png) no-repeat; background-position: center; background-size: 100% 100%; }
+.g-bg .g-body .g-left .m-right .box .bd .cont-box .cont { line-height: 2; position: absolute; top: 50%; left: 50%; margin-top: -45px; width: 120px; height: 90px; margin-left: -60px; }
+.g-bg .g-body .g-right { flex: 1; display: flex; }
+.g-bg .g-body .g-right .m-echart-box { flex: 1; }
+.g-bg .g-body .g-right .m-echart-box .m-echart { position: relative; width: 100%; background: url(../img/tasklist/box.png) no-repeat; background-position: center; background-size: 100% 100%; }
+.g-bg .g-body .g-right .m-echart-box .m-echart .ech { min-height: 230px; }
+.g-bg .g-body .g-right .m-echart-box .m-echart .title { position: absolute; width: 140px; margin: 0 auto; text-align: center; top: 50px; left: 50%; margin-left: -70px; background: url(../img/tasklist/title.png) no-repeat; background-position: center; background-size: 100% 100%; }
+.g-bg .g-body .g-right .m-echart-box .m-echart .title span { position: relative; top: -15px; }
+.g-bg .g-body .g-right .m-echart-box .m-echart .sub-title { position: absolute; top: 30px; right: 40px; }
+
+@media screen and (max-device-width: 1300px) { .g-bg .g-body .g-right { margin-top: 10px; }
+  .g-bg .g-body .g-left .m-left .img { margin-top: -75px; margin-left: -75px; width: 150px; height: 150px; }
+  .g-bg .g-body .g-left .m-right { padding-left: 0; }
+  .g-bg .g-body .g-left .m-left { width: 200px; }
+  .g-bg .g-body .g-left .m-right .box .hd::after { width: 50px; left: -30px; }
+  .g-bg .g-body .g-left .m-right .box .hd.one::before { width: 148px; left: -129px; top: 173px; }
+  .g-bg .g-body .g-left .m-right .box .hd.three::before { width: 144px; left: -131px; top: 39px; }
+  .g-bg .g-body .g-left .m-left .img::before { left: 89px; top: 13px; }
+  .g-bg .g-body .g-left .m-left .img::after { left: 81px; bottom: 3px; }
+  .g-bg .g-body .g-left .m-right .box .hd::before { left: -36px; }
+  .g-bg .g-body .g-right .m-echart-box .m-echart .title { width: 100px; top: 35px; }
+  .g-bg .g-body .g-right .m-echart-box .m-echart .sub-title { top: 17px; right: 26px; font-size: 12px; } }
+
+/*# sourceMappingURL=tasklist.css.map */

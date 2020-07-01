@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中心层进度总揽</title>
+  <link rel="stylesheet" href="./css/tasklist.css">
+</head>
+
+
+<body class="g-bg">
+  <div class="g-header">
+    <div class="g-up">
+      <span class="hd">中心层进度总揽</span>
+    </div>
+  </div>
+  <div class="g-body">
+    <div class="g-left">
+      <div class="m-left">
+        <div class="img"><span>统计</span></div>
+      </div>
+      <div class="m-right">
+        <div class="box">
+          <div class="hd one">
+            <div class="img" id="MonthClick"><span>本月</span></div>
+          </div>
+          <div class="bd">
+            <div class="cont-box">
+              <div class="cont">
+                <p id="todayFinish">完成任务：<span>90</span> 项</p>
+                <p id="todayCreate">创建任务：<span>90</span>项</p>
+                <p id="todayPercent">完成度：<span>90</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="hd two">
+            <div class="img" id="QuarterClick"><span>本季度</span></div>
+          </div>
+          <div class="bd">
+            <div class="cont-box">
+              <div class="cont">
+                <p id="thisWeekFinish">完成任务：<span>90</span> 项</p>
+                <p id="thisWeekCreate">创建任务：<span>90</span>项</p>
+                <p id="thisWeekPercent">完成度：<span>90</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="hd three">
+            <div class="img" id="YearClick"><span>全年</span></div>
+          </div>
+          <div class="bd">
+            <div class="cont-box">
+              <div class="cont">
+                <p id="thisMonthFinish">完成任务：<span>90</span> 项</p>
+                <p id="thisMonthCreate">创建任务：<span>90</span>项</p>
+                <p id="thisMonthPercent">完成度：<span>90</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="g-right">
+      <div class="m-echart-box">
+        <div class="m-echart">
+          <div class="title"><span>试验任务</span></div>
+          <div class="sub-title">
+            <p id="testTask">完成度：<span>35%</span></span>
+            <p>党员参与度：50%</p>
+          </div>
+          <div class="ech" id="Bar1"></div>
+        </div>
+        <div class="m-echart">
+          <div class="title"><span>排管任务</span></div>
+          <div class="sub-title">
+            <p id="calandriaTask">完成度：<span>35%</span></span>
+            <p>党员参与度：50%</p>
+          </div>
+          <div class="ech" id="Bar2"></div>
+        </div>
+        <div class="m-echart">
+          <div class="title"><span>红外测温任务</span></div>
+          <div class="sub-title">
+            <p id="thermometryTask">完成度：<span>35%</span></span>
+            <p>党员参与度：50%</p>
+          </div>
+          <div class="ech" id="Bar3"></div>
+        </div>
+      </div>
+      <div class="m-echart-box">
+        <div class="m-echart">
+          <div class="title"><span>测绘任务</span></div>
+          <div class="sub-title">
+            <p id="mappingTask">完成度：<span>35%</span></span>
+            <p>党员参与度：50%</p>
+          </div>
+          <div class="ech" id="Bar4"></div>
+        </div>
+        <div class="m-echart">
+          <div class="title"><span>反外损任务</span></div>
+          <div class="sub-title">
+            <p id="outsideTheLossTask">完成度：<span>35%</span></span>
+            <p>党员参与度：50%</p>
+          </div>
+          <div class="ech" id="Bar5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/echarts.min.js"></script>
+  <!-- <script src="./js/echarts-gl.min.js"></script> -->
+  <script src="./js/jquery-1.9.1.min.js"></script>
+  <!-- <script src="./js/countUp.js"></script> -->
+  <script src="./js/setEchartsForTaskList.js"></script>
+  <!-- <script src="./js/circle-progress.js"></script> -->
+  <script src="./js/getDataForTaskList.js"></script>
+
+  <script>
+    $(function () {
+      var S_width = window.screen.availWidth;
+      var S_height = window.screen.availHeight;
+      $('.g-bg').css("width", S_width + 'px');
+      $('.g-bg').css("height", S_height + 'px');
+
+      var gbHeight = S_height - $('.g-up').height();
+      $('.g-right').css("height", (gbHeight - 30) + 'px');
+      $('.m-echart .ech').css("height", (gbHeight - 100) / 3 + 'px');
+
+      $("#MonthClick").click(function(){
+        g.countTaskAllByTaskType(0);
+        TransverseBarChart.resize();
+      })
+      $("#QuarterClick").click(function(){
+        g.countTaskAllByTaskType(1);
+        TransverseBarChart.resize();
+      })
+      $("#YearClick").click(function(){
+        g.countTaskAllByTaskType(2);
+        TransverseBarChart.resize();
+      })
+    })
+  </script>
+</body>
+
+
+</body>
+
+</html>
