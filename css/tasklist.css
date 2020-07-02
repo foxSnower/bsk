@@ -22,6 +22,7 @@ ul { list-style: none; }
 .g-bg .g-body .g-left .m-right .box .hd.one::before { content: ''; width: 120px; height: 1px; transform: rotate(-70deg); left: -220px; top: 160px; }
 .g-bg .g-body .g-left .m-right .box .hd.three::before { content: ''; width: 120px; height: 1px; transform: rotate(-115deg); left: -225px; top: 50px; }
 .g-bg .g-body .g-left .m-right .box .hd .img { position: absolute; top: 50%; margin-top: -75px; left: 50%; margin-left: -75px; width: 150px; height: 150px; background: url(../img/tasklist/total.png) no-repeat; background-position: center; background-size: auto 100%; cursor: pointer; }
+.g-bg .g-body .g-left .m-right .box .hd .img.active { background: url(../img/tasklist/total-active.png) no-repeat; }
 .g-bg .g-body .g-left .m-right .box .hd .img span { width: 100px; height: 60px; line-height: 60px; position: absolute; top: 50%; margin-top: -30px; left: 50%; margin-left: -50px; font-size: 24px; text-align: center; }
 .g-bg .g-body .g-left .m-right .box .bd { flex: 1; position: relative; }
 .g-bg .g-body .g-left .m-right .box .bd::before { content: ''; position: absolute; width: 8px; height: 8px; background-color: #03fcfe; left: -19px; top: 50%; border-radius: 8px; margin-top: -4px; }

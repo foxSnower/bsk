@@ -24,7 +24,7 @@
       <div class="m-right">
         <div class="box">
           <div class="hd one">
-            <div class="img" id="MonthClick"><span>本月</span></div>
+            <div class="img active" id="MonthClick"><span>本月</span></div>
           </div>
           <div class="bd">
             <div class="cont-box">
@@ -136,14 +136,23 @@
       $("#MonthClick").click(function(){
         g.countTaskAllByTaskType(0);
         TransverseBarChart.resize();
+        $("#MonthClick").addClass('active');
+        $("#QuarterClick").removeClass('active');
+        $("#YearClick").removeClass('active');
       })
       $("#QuarterClick").click(function(){
         g.countTaskAllByTaskType(1);
         TransverseBarChart.resize();
+        $("#MonthClick").removeClass('active');
+        $("#QuarterClick").addClass('active');
+        $("#YearClick").removeClass('active');
       })
       $("#YearClick").click(function(){
         g.countTaskAllByTaskType(2);
         TransverseBarChart.resize();
+        $("#MonthClick").removeClass('active');
+        $("#QuarterClick").removeClass('active');
+        $("#YearClick").addClass('active');
       })
     })
   </script>
